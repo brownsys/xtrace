@@ -6,7 +6,7 @@ function XTraceDAG(attachPoint, reports, /*optional*/ params) {
     var lightweight = params.lightweight ? true : false;
     
     // Twiddle the attach point a little bit
-    var rootSVG = d3.select(attachPoint).append("svg");
+    var rootSVG = d3.select(attachPoint).append("svg").attr("width", "100%").attr("height", "100%");
     var graphSVG = rootSVG.append("svg").attr("width", "100%").attr("height", "100%").attr("class", "graph-attach");
     graphSVG.node().oncontextmenu = function(d) { return false; };
     var minimapSVG = rootSVG.append("svg").attr("class", "minimap-attach");
