@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Maps;
-
 import edu.brown.cs.systems.xtrace.Metadata.XTraceMetadata;
 import edu.brown.cs.systems.xtrace.Metadata.XTraceMetadataOrBuilder;
 import edu.brown.cs.systems.xtrace.Reporting.XTraceReport3;
@@ -443,6 +441,10 @@ public class XTrace {
     if (base64!=null) {
       XTrace.set(base64);
     }
+  }
+  
+  public static void shutdown() {
+    REPORTER.close();
   }
 
 }

@@ -55,6 +55,7 @@ class PubSubReporter extends Reporter implements Runnable {
     this.hostname = hostname;
     this.port = port;
     worker = new Thread(this);
+    worker.setDaemon(true);
     worker.start();
   }
 
@@ -96,7 +97,6 @@ class PubSubReporter extends Reporter implements Runnable {
 
     // Close the publisher
     publisher.close();
-
   }
 
 }
