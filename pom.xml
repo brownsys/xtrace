@@ -85,7 +85,33 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/protobuf</directory>
+			</resource>
+		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.9.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/examples/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -96,28 +122,43 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>appassembler-maven-plugin</artifactId>
-				<version>1.7</version>
-				<configuration>
-					<programs>
-						<program>
-							<mainClass>edu.brown.cs.systems.xtrace.server.XTraceServer</mainClass>
-							<name>backend</name>
-							<jvmSettings>
-								<extraArgument>-Dlog4j.configuration=log4j-server.properties</extraArgument>
-							</jvmSettings>
-						</program>
-					</programs>
-				</configuration>
 				<executions>
 					<execution>
-						<id>package</id>
+						<id>generate-server-scripts</id>
 						<goals>
 							<goal>assemble</goal>
 						</goals>
+						<configuration>
+							<programs>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.server.XTraceServer</mainClass>
+									<name>backend</name>
+									<jvmSettings>
+										<extraArgument>-Dlog4j.configuration=log4j-server.properties</extraArgument>
+									</jvmSettings>
+								</program>
+							</programs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>generate-example-scripts</id>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+						<configuration>
+							<binFolder>examples</binFolder>
+							<programs>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.helloworld.XTraceHelloWorld</mainClass>
+									<name>HelloWorld1</name>
+								</program>
+							</programs>
+						</configuration>
 					</execution>
 				</executions>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.9</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
