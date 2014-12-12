@@ -3,6 +3,7 @@ package edu.brown.cs.systems.xtrace;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import edu.brown.cs.systems.pubsub.PubSub;
 import edu.brown.cs.systems.pubsub.Publisher;
 import edu.brown.cs.systems.pubsub.Settings;
 import edu.brown.cs.systems.xtrace.Reporting.XTraceReport3.Builder;
@@ -23,6 +24,7 @@ class PubSubReporter extends Reporter implements Runnable {
    * thread is descheduled for large amounts of time
    */
   protected final BlockingQueue<Builder> outgoing = new LinkedBlockingQueue<Builder>();
+  protected volatile boolean running = false;
   protected volatile boolean alive = true;
   protected final Thread worker;
   private String hostname = null;
@@ -55,14 +57,14 @@ class PubSubReporter extends Reporter implements Runnable {
     this.hostname = hostname;
     this.port = port;
     worker = new Thread(this);
-    worker.setDaemon(true);
     worker.start();
   }
 
   /** Shuts down this logger and stops sending messages */
   public void close() {
     alive = false;
-    worker.interrupt();
+    if (running)
+      worker.interrupt();
   }
 
   public boolean isAlive() {
@@ -84,6 +86,7 @@ class PubSubReporter extends Reporter implements Runnable {
       port = Settings.CLIENT_PUBLISH_PORT;
     Publisher publisher = new Publisher(hostname, port);
     try {
+      running = true;
       while (alive && !Thread.currentThread().isInterrupted()) {
         publisher.publish(XTraceSettings.PUBSUB_TOPIC, outgoing.take().build());
       }

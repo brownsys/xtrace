@@ -1,11 +1,11 @@
 package edu.brown.cs.systems.xtrace.examples.helloworld;
 
-import edu.brown.cs.systems.pubsub.PubSub;
-import edu.brown.cs.systems.pubsub.PubSubProtos.StringMessage;
 import edu.brown.cs.systems.xtrace.XTrace;
 
 /**
  * This example creates an XTrace task and prints hello world
+ * 
+ * A single task will show up in the XTrace WebUI, that has two events
  */
 public class XTraceHelloWorld {
 	
@@ -15,13 +15,9 @@ public class XTraceHelloWorld {
 		
 		XTrace.startTask(true);
 		
-		Thread.sleep(1000);
-		
 		x.log("Hello World!");
 		
 		x.log("Goodbye World!");
-    
-    Thread.sleep(1000);
 		
 		XTrace.shutdown();
 		
