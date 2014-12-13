@@ -160,6 +160,40 @@
 									<mainClass>edu.brown.cs.systems.xtrace.examples.helloworld.XTraceMultiHelloWorld2</mainClass>
 									<name>HelloWorld3</name>
 								</program>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.multiproc.XTraceMultiprocExample</mainClass>
+									<name>Multiproc</name>
+									<commandLineArguments>
+										<commandLineArgument>firstTopic</commandLineArgument>
+									</commandLineArguments>
+								</program>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.multiproc.MultiprocListener</mainClass>
+									<name>MultiprocListenerA</name>
+									<commandLineArguments>
+										<commandLineArgument>listenerA</commandLineArgument>
+										<commandLineArgument>firstTopic</commandLineArgument>
+										<commandLineArgument>secondTopic</commandLineArgument>
+									</commandLineArguments>
+								</program>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.multiproc.MultiprocListener</mainClass>
+									<name>MultiprocListenerB</name>
+									<commandLineArguments>
+										<commandLineArgument>listenerB</commandLineArgument>
+										<commandLineArgument>secondTopic</commandLineArgument>
+										<commandLineArgument>thirdTopic</commandLineArgument>
+									</commandLineArguments>
+								</program>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.multiproc.MultiprocListener</mainClass>
+									<name>MultiprocListenerC</name>
+									<commandLineArguments>
+										<commandLineArgument>listenerC</commandLineArgument>
+										<commandLineArgument>thirdTopic</commandLineArgument>
+										<commandLineArgument>fourthTopic</commandLineArgument>
+									</commandLineArguments>
+								</program>
 							</programs>
 						</configuration>
 					</execution>
