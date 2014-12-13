@@ -3,7 +3,6 @@ package edu.brown.cs.systems.xtrace;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import edu.brown.cs.systems.pubsub.PubSub;
 import edu.brown.cs.systems.pubsub.Publisher;
 import edu.brown.cs.systems.pubsub.Settings;
 import edu.brown.cs.systems.xtrace.Reporting.XTraceReport3.Builder;

@@ -152,6 +152,14 @@
 									<mainClass>edu.brown.cs.systems.xtrace.examples.helloworld.XTraceHelloWorld</mainClass>
 									<name>HelloWorld1</name>
 								</program>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.helloworld.XTraceMultiHelloWorld</mainClass>
+									<name>HelloWorld2</name>
+								</program>
+								<program>
+									<mainClass>edu.brown.cs.systems.xtrace.examples.helloworld.XTraceMultiHelloWorld2</mainClass>
+									<name>HelloWorld3</name>
+								</program>
 							</programs>
 						</configuration>
 					</execution>
