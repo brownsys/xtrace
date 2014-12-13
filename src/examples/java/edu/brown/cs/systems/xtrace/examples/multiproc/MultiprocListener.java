@@ -22,6 +22,8 @@ public class MultiprocListener extends Callback<StringMessage> {
   protected void OnMessage(StringMessage message) {
     // extract the xtrace context
     XTrace.set(message.getMessage());
+    
+    System.out.println("Received a message from task " + XTrace.getTaskID());
 
     x.log("Received the message in " + name + "!");
 
