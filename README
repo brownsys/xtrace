@@ -20,7 +20,7 @@ You must also clone this repository and install it into your local maven reposit
 > mvn clean package install
 
 To run a clean build and install of X-Trace:
-> mvn clean package install appassembler:assemble
+> mvn clean package install
 
 To run performance tests to measure costs of metadata propagation and logging:
 > mvn integration-test
